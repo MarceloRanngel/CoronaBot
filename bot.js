@@ -38,6 +38,19 @@ const publicoparams = {
     lang: 'pt'
 }
 
+const minsauderecentparams = {
+    q: 'from:minsaude Corona OR covid-19 OR coronavírus OR #Coronavírus filter:verified' , 
+    result_type: 'recent',
+    count: 20,
+    lang: 'pt'
+}
+
+const minsaudeparams = {
+    q: 'from:minsaude Corona OR covid-19 OR coronavírus OR #Coronavírus filter:verified' ,
+    result_type: 'popular',
+    count: 20,
+    lang: 'pt'
+}
 
 tweetBot.get('search/tweets', verifiedmediaparams,  (err, data, res) => {
     if(!err){
@@ -112,6 +125,54 @@ tweetBot.get('search/tweets', bolsonaroparams,  (err, data, res) => {
 })
 
 tweetBot.get('search/tweets', bolsonarorecentparams,  (err, data, res) => {
+    if(!err){
+        for(let i=0; i < data.statuses.length; i++){
+            let tweetID = {id: data.statuses[i].id_str}
+            tweetBot.post('statuses/retweet', tweetID, (err, res) => {
+                if(!err){
+                    console.log(`Bolsonaro Retweetado com Sucesso nº ` + i)
+                }else{
+                    console.log(err.message)
+                }
+            })
+            tweetBot.post('favorites/create', tweetID, (err, res) => {
+                if(!err){
+                    console.log(`Bolsonaro Curtido com Sucesso nº ` + i)
+                }else{
+                    console.log(err.message)
+                }
+            })
+        }
+    }else{
+        console.log(err)
+    }
+})
+
+tweetBot.get('search/tweets', minsaudeparams,  (err, data, res) => {
+    if(!err){
+        for(let i=0; i < data.statuses.length; i++){
+            let tweetID = {id: data.statuses[i].id_str}
+            tweetBot.post('statuses/retweet', tweetID, (err, res) => {
+                if(!err){
+                    console.log(`Bolsonaro Retweetado com Sucesso nº ` + i)
+                }else{
+                    console.log(err.message)
+                }
+            })
+            tweetBot.post('favorites/create', tweetID, (err, res) => {
+                if(!err){
+                    console.log(`Bolsonaro Curtido com Sucesso nº ` + i)
+                }else{
+                    console.log(err.message)
+                }
+            })
+        }
+    }else{
+        console.log(err)
+    }
+})
+
+tweetBot.get('search/tweets', minsauderecentparams,  (err, data, res) => {
     if(!err){
         for(let i=0; i < data.statuses.length; i++){
             let tweetID = {id: data.statuses[i].id_str}
