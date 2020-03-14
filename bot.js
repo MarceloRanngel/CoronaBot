@@ -154,14 +154,14 @@ tweetBot.get('search/tweets', minsaudeparams,  (err, data, res) => {
             let tweetID = {id: data.statuses[i].id_str}
             tweetBot.post('statuses/retweet', tweetID, (err, res) => {
                 if(!err){
-                    console.log(`Bolsonaro Retweetado com Sucesso nº ` + i)
+                    console.log(`Ministerio da Saude Retweetado com Sucesso nº ` + i)
                 }else{
                     console.log(err.message)
                 }
             })
             tweetBot.post('favorites/create', tweetID, (err, res) => {
                 if(!err){
-                    console.log(`Bolsonaro Curtido com Sucesso nº ` + i)
+                    console.log(`Ministerio da Saude Curtido com Sucesso nº ` + i)
                 }else{
                     console.log(err.message)
                 }
@@ -178,14 +178,14 @@ tweetBot.get('search/tweets', minsauderecentparams,  (err, data, res) => {
             let tweetID = {id: data.statuses[i].id_str}
             tweetBot.post('statuses/retweet', tweetID, (err, res) => {
                 if(!err){
-                    console.log(`Bolsonaro Retweetado com Sucesso nº ` + i)
+                    console.log(`Ministerio da Saude Recente Retweetado com Sucesso nº ` + i)
                 }else{
                     console.log(err.message)
                 }
             })
             tweetBot.post('favorites/create', tweetID, (err, res) => {
                 if(!err){
-                    console.log(`Bolsonaro Curtido com Sucesso nº ` + i)
+                    console.log(`Ministerio da Saude Recente Curtido com Sucesso nº ` + i)
                 }else{
                     console.log(err.message)
                 }
